@@ -1,0 +1,3 @@
+carwars.exe : carwars.c
+  bcc -ml carwars.c cxlbcl.lib
+
