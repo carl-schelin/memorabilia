@@ -1,0 +1,11 @@
+checklog:
+
+   take a file from the command line
+   parse it for date and time each user oppen's and closes the file
+   check for #users, when access, 
+   print graph from 12am to 12am
+   draw lines from start to finish times
+   graph for number times opened each day
+   graph for user and the times he used it
+   different colors for port1/port2 (specific to nasamail)
+   

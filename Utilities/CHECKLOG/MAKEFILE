@@ -1,0 +1,2 @@
+checklog.exe : checklog.c
+  bcc checklog.c
