@@ -1,0 +1,167 @@
+
+    BATCHIT.EXE v1.21 - Copyright 1994 by Carl Schelin, All Rights Reserved
+    컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+
+    BatchIt is a utility that retrieves a list of directories and builds a
+    batch file containing commands to be executed based on each of the
+    directories.
+
+    Purpose
+
+    On my LAN, user configuration files are located in their home
+    directories. I created a user root directory (D:\USERDIRS) and each
+    home directory is based here.
+
+    Until now, I had to create a batch file on the fly or maintain one
+    that contained every home directory name when I needed to perform
+    maintenance.
+
+    BatchIt creates these batch files as necessary with the required
+    commands.
+
+    Syntax
+
+    BatchIt takes two types of parameters: execution method and a list of
+    commands to be processed.
+
+    If the execution method parameter is a valid filename then the filename 
+    is created and the rest of the parameters are written to this file.
+
+    If the execution method parameter is the word NULL then the rest of
+    the parameters are executed directly. This command is easier to run
+    but temporary batch files are created for each directory and then
+    deleted. You will find it faster to create the batch file and execute
+    it seperately.
+
+    The list of commands can be any text you want to execute for each found 
+    directory. Because you are executing on multiple directories, I created 
+    five replacement codes that can be used. The codes $g, $l, &b and $_ 
+    are equivalent to the codes used in the MS-DOS PROMPT command.
+
+        $d - This code is replaced by the found directory name. This is 
+             great when you have to execute a command that requires the 
+             directory name more than once. Currently you are limited to 
+             replicating the directory name fifteen times. This should be 
+             more than sufficient. See Example for usage.
+
+        $g - Since you can't pass the greater than character as a
+             parameter, I created this code. Output information can be
+             stored in a file or passed to NUL if no output is wanted.
+
+        $l - You also can't pass the less than character as a parameter. I
+             created this code for the same reason I created $g.
+             Information can now be passed into the commands in the new
+             batch file.
+
+        $b - This code replaces the pipe character as a parameter.
+
+        $_ - This code breaks the parameter line into multiple lines placed
+             in the batch file. Great if you need to do multiple commands.
+
+    Example
+
+    On the LAN I adminstrate, there are over 100 accounts. In each home
+    directory are the WIN31, NET, WP51, NTC, and other directories specific 
+    to each user. If you needed to get a copy of each user's WIN.INI file 
+    you could either go to each directory and copy it to your local drive:
+
+    P:\>copy admin\win31\win.ini c:\win\admin.ini
+             1 file(s) copied
+
+    P:\>copy ajackson\win31\win.ini c:\win\ajackson.ini
+             1 file(s) copied
+
+    ...
+
+    The standard method, create a batch file on the fly, cutting and 
+    pasting until you get all the commands created and then executing the 
+    batch file.
+
+    P:\>dir *. > winedit.bat
+    P:\>qedit winedit.bat
+    <cut and paste, building each line using search and replace>
+    P:\>winedit
+
+    You could also maintain a batch file that has a list of each user on
+    the LAN. As you add or delete users, you modify this batch file. You
+    must periodically check this batch file in case you forgot one time or
+    were in a hurry.
+
+    Or you could run BatchIt and create the batch file ready to execute.
+    You could even execute the commands without executing a single batch
+    file yourself!
+
+    Taking the above situation you would type in the following command:
+
+    P:\>batchit winedit.bat copy $d\win31\win.ini c:\win\$d.ini
+
+    This command would run through the list of directories in the current
+    directory, building the batch file WINEDIT.BAT which contain the 
+    following lines:
+
+    copy ADMIN\win31\win.ini c:\win\ADMIN.ini
+    copy AJACKSON\win31\win.ini c:\win\AJACKSON.ini
+    ...
+
+    When you execute WINEDIT.BAT all the files will be copied into your
+    C:\WIN directory without you having to do any cutting or pasting. You
+    could even execute the command as follows:
+
+    P:\>batchit null copy $d\win31\win.ini c:\win\$d.ini
+
+    This would execute the passed command without the intermediate step of
+    executing WINEDIT.BAT! The problem of course would be if there was a 
+    problem in the command line. Then you would have to watch every error
+    go by without being able to interrupt.
+
+    When using the $_ command you can take the above example and add a new 
+    line. This can let you copy and then remove a file.
+
+    P:\>batchit we.bat copy $d\win31\win.ini c:$d.ini$_del $d\win31\win.ini
+
+    This results in the following lines in the batch file WE.BAT
+
+    copy ADMIN\win31\win.ini c:ADMIN.ini
+    del ADMIN\win31\win.ini
+    copy AJACKSON\win31\win.ini c:AJACKSON.ini
+    del AJACKSON\win31\win.ini
+
+    Shareware
+
+    Of course there's always a pitch. I generally write these utilities
+    for use on my current LANs. If you want to use it, great. To continue
+    to use BatchIt past the two week trial period you must register.
+    Please send $5.00 to:
+
+    Carl Schelin
+    3925 Penshurst LN. #101
+    Woodbridge VA 22192
+
+    Good luck and may the farce be with you.
+
+    Release Information
+
+    v1.0    Initial release
+
+    v1.1    Unable to read certain directories on the OS/2 based server. 
+            Change the directory verify from the ffblk structure to opening 
+            $d\NUL for write access. If I can open this device then ff_name 
+            is a directory. Needless to say, you must have write access to 
+            the directory to verify existance. Not a problem if you are the 
+            ADMIN.
+
+            Add the $_ command to allow multiple lines to be generated for 
+            each directory.
+
+            Increase limit of 5 occurances of $d to 15 due to the possible 
+            increase of usage of $d due to the addition of $_.
+
+    v1.2    I fixed the "hack" of opening the NUL file by testing the 
+            response of accessing the OS/2 directories. The response 
+            returns 0x30 which is a combination of FA_DIREC & FA_ARCH. I 
+            created FA_OS2DIREC and test for both directory types. Works 
+            faster and without flaw.
+
+    v1.21   Help file says "one of the following four commands" when it 
+            should say "five"
+
