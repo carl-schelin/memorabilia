@@ -1,0 +1,40 @@
+Command: QColor.Exe
+
+Syntax: QColor [S]
+
+Brief: QColor returns an ErrorLevel for the Adapter Type.
+
+Explanation: QColor alone will return an errorlevel from 0 to 11 which 
+   shows what kind of adapter you have installed in your machine. If you 
+   put any character on the command line (S is an example), it will return
+   0, 1, or 2 depending on what kind of monitor.
+
+Tables:
+
+   Command Line Added
+
+      0 - No Adapter
+      1 - Monochrome Adapter
+      2 - Color Adapter
+
+   No Command Line
+
+      0 - No Adapter
+      1 - Monochrome Adapter
+      2 - EGA Adapter in Mono Mode
+      3 - MCGA Adapter in Mono Mode
+      4 - VGA Adapter in Mono Mode
+      5 - Hercules Graphics Adapter
+      6 - Hercules Graphics Adapter Plus
+      7 - Hercules InColor Adapter          <--- Break point for Mono/Color
+      8 - CGA Adapter
+      9 - EGA Adapter
+     10 - MCGA Adapter
+     11 - VGA Adapter
+
+Note: While I have seen a few programs that return the monitor type, color or
+   monochrome, I haven't seen one that shows just what type is installed. Also 
+   this returns what it perceives not what is actually there. If you have a 
+   clone Herc card, you may see Hercules InColor adapter.
+
+Author: Carl Schelin - (703) 670-7019
