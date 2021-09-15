@@ -1,0 +1,57 @@
+PROGNAME=Free
+MODEL=l
+COMPILER=bcc
+LINKER=TLink
+TCXLVER=TCXL
+
+!If $d(DEBUG)
+
+DEBLIB=d
+OBJSW=-c -K -w -d -N- -k- -O -Z -v -ID:\Lang\BC\Include;D:\Libs\$(TCXLVER)\Inc -m$(MODEL)
+LNKSW=/v /LD:\Lang\BC\Lib;D:\Lib\$(TCXLVER)\Lib 
+
+!Else
+
+OBJSW=-c -K -w -d -N- -k- -O -Z -ID:\Lang\BC\Include;D:\Libs\$(TCXLVER)\Inc -m$(MODEL)
+LNKSW=/x /LD:\Lang\BC\Lib;D:\Lib\$(TCXLVER)\Lib 
+
+!EndIf
+
+!If $d(GRAPHICS)
+
+OBJSW=$(OBJSW) -DGRAPHICS
+
+EXE_dependencies = $(PROGNAME).obj egavga.obj litt.obj d:\libs\$(TCXLVER)\lib\tcxlbc$(MODEL)$(DEBLIB).lib
+OBJ_files = c0$(MODEL).obj $(PROGNAME).obj egavga.obj litt.obj
+LINK_files = noeh$(MODEL).lib graphics.lib d:\libs\$(TCXLVER)\lib\tcxlbc$(MODEL)$(DEBLIB).lib emu.lib math$(MODEL).lib c$(MODEL).lib
+
+!Else
+
+EXE_dependencies = $(PROGNAME).obj d:\libs\$(TCXLVER)\lib\tcxlbc$(MODEL)$(DEBLIB).lib
+OBJ_files = c0$(MODEL).obj $(PROGNAME).obj
+LINK_files = noeh$(MODEL).lib d:\libs\$(TCXLVER)\lib\tcxlbc$(MODEL)$(DEBLIB).lib emu.lib math$(MODEL).lib c$(MODEL).lib
+
+!EndIf
+
+.c.obj:
+  $(COMPILER) $(OBJSW) {$< }
+
+.cpp.obj:
+  $(COMPILER) $(OBJSW) {$< }
+
+$(PROGNAME).Exe : $(EXE_dependencies)
+   $(LINKER) $(LNKSW)@&&|
+$(OBJ_files)
+$(PROGNAME)
+                # no map file
+$(LINK_files)
+|
+
+free.obj : free.c free.h
+
+egavga.obj : d:\lang\bc\bgi\egavga.bgi
+  d:\lang\bc\bgi\bgiobj d:\lang\bc\bgi\egavga
+
+litt.obj : d:\lang\bc\bgi\litt.chr
+  d:\lang\bc\bgi\bgiobj d:\lang\bc\bgi\litt
+

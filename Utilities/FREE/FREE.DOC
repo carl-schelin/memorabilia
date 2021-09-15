@@ -1,0 +1,190 @@
+
+Program: Free.Exe version 2.08
+
+
+Syntax: Free [/d /f /g /h /i /n /r /u /?]
+
+
+Brief: Displays available and total drive space on all drives.
+
+
+Switches: 
+
+    /d   - Displays the full text for the drive type. This information is 
+           accurate to the best of my knowledge. If you find that something is 
+           incorrect, let me know and I'll try to fix it.
+    /f   - Checks each floppy in addition to the other drives. May get a 
+           "Drive not responding" error. Fixable with the /r switch.
+    /g   - Displays the drive usage in a simple text bar graph. It's visually 
+           accurate.
+    /h/? - Displays quick help text about each switch. The modifiable switches 
+           have either a '+' or '-' displayed depending on the permanent 
+           setting.
+    /i   - Numerical drive usage is displayed along the lines of the /g 
+           switch. Also displays sector and cluster sizes.
+    /n   - Normally, if a code is unknown ('?'), a four digit hex code is also 
+           displayed. If you don't wish to see the code, use this switch to 
+           turn it off. You'll still get the '?' for drive type.
+    /r   - If a drive would normally return with a "Drive not responding" 
+           error, this switch will cause it to be ignored instead.
+    /u   - Take the above switches and make them permanent (until next time). 
+           If you use this switch to make changes and wish to see one of the 
+           other mutually exclusive switch settings, use the modified switches 
+           to turn them off. For example, if you have made /g permanent and 
+           you wish to see the /d switch instead, you would have to have /d 
+           AND /g on the command line. 
+
+*** WARNING *** The /u switch has the capability of being dangerous. I have 
+    tried to make sure it doesn't write to anything other than Free.Exe 
+    (verifies the location by matching two strings) but you're on your own if 
+    you choose to use it. It would be just a little harder to locate a Binary 
+    File Editor and make the changes manually or safer yet, don't change it. 
+    The default is generally adequate for most situations.
+    
+
+Explanation: Free checks each drive from A to Z and displays one of five
+    possible lines depending on command line switches:
+
+    1)  d:    available        total   t d:\directory
+        [d:]        - is the drive being checked.
+        [available] - Free Space.
+        [total]     - Total Space.
+        [t]         - Drive Type.
+                        ' ' for a local, joined or assigned drive.
+                        'r' for a removable drive (floppy and bernoulli)
+                        'n' for a networked drive.
+                        's' for a substituted drive.
+                        'v' for a virtual disk (VDisk.Sys).
+                        '?' for any other drive. If you see a '?', you will 
+                              also see a 4 digit hex code prior to it. This 
+                              code is what Free thinks that drive is. If 
+                              you'll send me a printout of the code and system 
+                              information consisting of drive type, dos 
+                              version, system and anything else you think will 
+                              identify it, I will try to verify it (maybe by 
+                              sending you a copy of the next version to check 
+                              for me) and send you the most current version. 
+                              The hex code can be turned off by using the /n 
+                              switch. 
+        [directory] - Current Directory.
+
+    2)  d:    available        total   t uuu%    cccc bytes    sss bytes
+        [d:]        - is the drive being checked.
+        [available] - Free Space.
+        [total]     - Total Space.
+        [t]         - Drive Type. (see above)
+        [uuu]       - Percentage in use. 
+        [cccc]      - Number of bytes per cluster.
+        [sss]       - Number of bytes per sector.
+
+    3) ->d<-                              [Network ]Drive not responding.
+        [->d<-]     - is the drive being checked.
+        [Network ]  - if the drive is a network link and is now unavailable, 
+                      you will have this added to the "Drive not responding" 
+                      message.
+
+    4) d:    available        total     long drive type
+        [d:]              - is the drive being checked.
+        [available]       - Free Space.
+        [total]           - Total Space.
+        [long drive type] - Full text description of device.
+
+    5) d:    available        total    t [ ... ]
+        [d:]              - is the drive being checked.
+        [available]       - Free Space.
+        [total]           - Total Space.
+        [ ... ]           - Bar displaying space in use and total space.
+
+Joined and Assigned drives display the same characteristics as the drive 
+    they came from. If you Assign to a Network drive, the Assigned drive will 
+    be displayed as a Network drive.
+
+I originally decided to make sure it didn't run on any other version of Dos 
+    than 3.x but since there have been so many requests for an upgrade, I 
+    decided to modify this check. Now it will not work on any version of Dos 
+    older than 3.0. If you run it on any Dos other than 3.x, you may produce 
+    unpredictable results.
+
+
+Drive Types:
+
+Currently, the drive types I have discovered are as follows:
+
+    Dos 3.x Local Drive
+    Dos 4.x Local Drive
+    Dos 5.x or Greater Local Drive
+    Dos 5.x SCSI Drive
+    Dos 5.x ESDI Drive
+    Dos 5.x Local Drive (Double Disk)
+    Removable Drive (Bernoulli)
+    Removable Drive (Syquest 4.x Dos)
+    Removable Drive (Syquest 5.x Dos)
+    Removable Drive (3.5")
+    Removable Drive (Bridge 5.25")
+    Removable Drive (Bridge 5.25" on 4.x)
+    Network Drive (Banyan)
+    Network Drive (LAN Mgr 3.3 Dos)
+    Network Drive (LAN Mgr 5.x Dos)
+    Network Drive (LAN Mgr 6.x Dos)
+    Network Drive (LAN Mgr/3+Share/Token Ring)
+    Network Drive (3+Share - 3.31 Dos)
+    Network Drive (IBM PC LAN)
+    Network Drive (Sun PC NFS) *
+    Network Drive (DEC PathWorks)
+    Network Drive (Unitialized DEC?)
+    Network Drive (DEC PathWorks)
+    Dos 3.x SUBSTituted Drive
+    Dos 4.x SUBSTituted Drive
+    Dos 5.x or Greater SUBSTituted Drive
+    Dos 5.x SUBSTituted Drive (SCSI Base)
+    Dos 3.x SUBST Virtual Ram Disk (VDisk) **
+    Dos 3.x SUBST Virtual Ram Disk (MemBrain)
+    Dos 3.x SUBST Virtual Ram Disk (QuickMem)
+    Dos 3.x SUBST Virtual Ram Disk (XpanDisk)
+    Dos 5.x SUBST Removable Drive (Syquest)
+    Dos 5.x SUBST Expanded Disk (Double Disk)
+    Dos 3.x SUBST Removable Drive (Bernoulli)
+    Dos 3.x SUBST Virtual Ram Disk (VGADisk)
+    Dos 3.x SUBST Virtual Ram Disk (VDiskDD)
+    Dos 5.x SUBST ESDI Drive
+    Virtual Ram Disk (VDisk/RamDrive/LesDisk) *
+    Virtual Ram Disk (Intel Quickmem)
+    Virtual Ram Disk (XpanDisk.Sys)
+    Virtual Ram Disk (VGADisk.Sys)
+    Virtual Ram Disk (MemBrain/AMDisk/RamDrv)
+    Virtual Ram Disk (Lanin/White Ram/VDiskDD)
+    Unknown code. Forward to Carl
+
+*  Sun's PCNFS doesn't return the same information for each IPL.
+** Reports are that the external Bernoulli 8" 20+20 think they are VDISK too.
+
+
+Note: Since I often move things from one drive to another, I always check to 
+    see how much space is left before hand.  I decided to create this utility 
+    to fix that and to tell me the current directory.  I like to know what the 
+    current directory is so I can copy to E: rather than E:\Advent\NH if E: is 
+    already pointing to the correct directory.
+
+
+After I posted it to comp.binaries.ibm.pc, I received a number of inquiries 
+    about some modifications and some hints about how to check for subst'd,
+    network'd and so on drive types. 
+
+Plans: Possibly adding a switch later to allow you to show the actual path 
+    rather than the substituted or network path. 
+
+
+Author: Carl Schelin - (703) 878-4391 - admin@codei.hq.nasa.gov
+
+
+Language: Borland C++ v4.50.3 (patched)
+
+
+Registration: Free is a Shareware Utility and is subject to whatever you wish 
+    to pay. I request a minimum registration fee of $15.00. If you wish to 
+    send more or something other than money, feel free (sorry :-). Send to:
+
+    Carl Schelin
+    3925 Penshurst LN #101
+    Woodbridge, VA  22192
+
