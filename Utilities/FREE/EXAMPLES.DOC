@@ -1,0 +1,126 @@
+Example 1: Free ? 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Help [/d /f /g /h /i /n /r /? ?]
+
+   /d   - Display the drive assignments as full text rather than by letter.
+   /f   - Include Floppies A: and/or B:.
+   /g   - Display usage in a bar graph format.
+   /h/? - Displays above information.
+   /i   - Display sector, cluster and usage information.
+   /n   - Do not display ? code information.
+   /r   - Do not display drives that don't respond.
+   /u   - Modify Free.Exe's default switches and exit.
+
+Free is a Shareware Utility from Carl Schelin. New codes are added all the
+time. If you find a new code send the output of Free and system information
+to me at tcs@mailer.jhuapl.edu. After verification, I'll send the updated
+version back to you. To register, send $5.00 to:
+Carl Schelin, 4630 Evansdale Road, Woodbridge, VA  22193
+ 
+ 
+Example 2: Free /d 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Drive Assignment
+  C:      3485696     33449984     Dos 5.x Local Drive
+  D:      1918976     33449984     Dos 5.x Local Drive
+  E:      3790848     24707072     Dos 5.x Local Drive
+  F:      3592192     33449984     Dos 5.x Local Drive
+  G:      1845248     33449984     Dos 5.x Local Drive
+  H:       319488     28147712     Dos 5.x Local Drive
+  J:      3485696     33449984     Dos 5.x SUBSTituted Drive
+ 
+ 
+Example 3: Free /f 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Current Directory
+->A<-				   Drive not responding.
+->B<-				   Drive not responding.
+  C:      3485696     33449984     C:\
+  D:      1918976     33449984     D:\UTIL\FREE
+  E:      3790848     24707072     E:\
+  F:      3592192     33449984     F:\
+  G:      1845248     33449984     G:\
+  H:       319488     28147712     H:\
+  J:      3485696     33449984   s J:\
+ 
+ 
+Example 4: Free /g 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Approximate Usage Graphically Displayed
+  C:      3485696     33449984     께께께께께께께께께께께께께께께께께께께껐같같
+  D:      1918976     33449984     께께께께께께께께께께께께께께께께께께께께껐같
+  E:      3790848     24707072     께께께께께께께께께께께께께께께께께께껐같같같
+  F:      3592192     33449984     께께께께께께께께께께께께께께께께께께께껐같같
+  G:      1845248     33449984     께께께께께께께께께께께께께께께께께께께께껐같
+  H:       319488     28147712     께께께께께께께께께께께께께께께께께께께께께껐
+  J:      3485696     33449984   s 께께께께께께께께께께께께께께께께께께께껐같같
+ 
+ 
+Example 5: Free /i 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Usage  Cluster Size  Sector Size
+  C:      3485696     33449984      90%    2048 bytes    512 bytes
+  D:      1916928     33449984      95%    2048 bytes    512 bytes
+  E:      3790848     24707072      85%    2048 bytes    512 bytes
+  F:      3592192     33449984      90%    2048 bytes    512 bytes
+  G:      1845248     33449984      95%    2048 bytes    512 bytes
+  H:       319488     28147712      99%    2048 bytes    512 bytes
+  J:      3485696     33449984   s  90%    2048 bytes    512 bytes
+ 
+ 
+Example 6: Free /d /f /r 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Drive Assignment
+  A:       212992      1457664     Dos 5.x Local Drive
+  C:      3485696     33449984     Dos 5.x Local Drive
+  D:      1916928     33449984     Dos 5.x Local Drive
+  E:      3790848     24707072     Dos 5.x Local Drive
+  F:      3592192     33449984     Dos 5.x Local Drive
+  G:      1845248     33449984     Dos 5.x Local Drive
+  H:       319488     28147712     Dos 5.x Local Drive
+  J:      3485696     33449984     Dos 5.x SUBSTituted Drive
+ 
+ 
+Example 7: Free /g /f /r 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Approximate Usage Graphically Displayed
+  A:       212992      1457664     께께께께께께께께께께께께께께께께께께껐같같같
+  C:      3485696     33449984     께께께께께께께께께께께께께께께께께께께껐같같
+  D:      1916928     33449984     께께께께께께께께께께께께께께께께께께께께껐같
+  E:      3790848     24707072     께께께께께께께께께께께께께께께께께께껐같같같
+  F:      3592192     33449984     께께께께께께께께께께께께께께께께께께께껐같같
+  G:      1845248     33449984     께께께께께께께께께께께께께께께께께께께께껐같
+  H:       319488     28147712     께께께께께께께께께께께께께께께께께께께께께껐
+  J:      3485696     33449984   s 께께께께께께께께께께께께께께께께께께께껐같같
+ 
+ 
+Example 8: Free /i /f 
+ 
+FREE v2.04 - Copyright 1990,1991 by Carl Schelin - All Rights Reserved
+
+Drive   Available      Total       Usage  Cluster Size  Sector Size
+  A:       212992      1457664      86%     512 bytes    512 bytes
+->B<-				   Drive not responding.
+  C:      3485696     33449984      90%    2048 bytes    512 bytes
+  D:      1914880     33449984      95%    2048 bytes    512 bytes
+  E:      3790848     24707072      85%    2048 bytes    512 bytes
+  F:      3592192     33449984      90%    2048 bytes    512 bytes
+  G:      1845248     33449984      95%    2048 bytes    512 bytes
+  H:       319488     28147712      99%    2048 bytes    512 bytes
+  J:      3485696     33449984   s  90%    2048 bytes    512 bytes
+ 
+ 
