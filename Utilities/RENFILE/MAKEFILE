@@ -1,0 +1,27 @@
+PROGNAME=renfile
+MODEL=l
+COMPILER=bcc
+LINKER=TLink
+OBJSW=-c -I$(INCLUDE) -m$(MODEL)
+LNKSW=/x /L$(LIB) 
+
+.c.obj:
+  $(COMPILER) $(OBJSW) {$< }
+
+EXE_dependencies =  \
+ renfile.obj
+ 
+$(PROGNAME).Exe :  $(EXE_dependencies)
+   $(LINKER) $(LNKSW)@&&|
+c0$(MODEL).obj+
+renfile.obj
+$(PROGNAME)
+		# no map file
+noeh$(MODEL)+
+emu.lib+
+math$(MODEL).lib+
+c$(MODEL).lib
+|
+
+renfile.obj : renfile.c
+

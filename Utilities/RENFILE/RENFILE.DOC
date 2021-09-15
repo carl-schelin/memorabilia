@@ -1,0 +1,30 @@
+
+Program: RenFile.Exe version 1.0
+
+Syntax: RenFile [Path]<OldFile> <NewFile> [/s] [/y]
+
+Brief: Renames files (or directories). With switches, you can rename files in 
+    a directory structure.
+
+Explanation: Renfile will rename any file (no wildcards just yet) into the 
+    second specified file. This is useful when you have to rename files with
+    similar names across a directory structure.
+
+    Renfile was written because the name of a virus serial file changed 
+    between versions. Since I try to do updates through the LAN logon process, 
+    I wrote this up to rename the files. Renfile takes the switches and path
+    because I like to write for a broader audience than one particular 
+    function. This lets Renfile be used in different circumstances.
+
+Author: Carl Schelin - (703) 878-4391 - admin@codei.hq.nasa.gov
+
+Language: Borland C++ v4.50 (patched)
+
+Registration: RenFile is shareware. For the registration free of $5.00 RenFile 
+    is yours to use. Register for $15.00 and receive an entire diskette of 
+    utilities that I have written.
+
+    Carl Schelin
+    3925 Penshurst LN #101
+    Woodbridge, VA  22192
+
