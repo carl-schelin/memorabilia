@@ -1,0 +1,24 @@
+
+Command: Group.Exe
+
+Syntax: Group [Domain_Name]
+
+Brief: Group verifys every member of a Group to make sure the member is a 
+    valid Username.
+
+Explanation: Group loops through the Name Service reading each group and then 
+    verifying every member. If a member is discovered that doesn't belong to 
+    the Wide-Area-Network, it is displayed.
+You can also select just one domain by entering it on the Command-Line when 
+    you execute Group.
+
+Example: 
+
+GROUP Name Verifier v1.1, Copyright (C) 1990, by Carl Schelin
+Getting Members from the Name Service...
+ERROR: "Schelin_Carl:NYMA:GTSI" in "HQ:HQ:GTSI" is an invalid Username.
+
+Note: This program was written to test some routines for a larger program. I 
+    decided to refine it a bit and send it out. I hope you like it.
+
+Author: Carl Schelin - (703) 659-9865
