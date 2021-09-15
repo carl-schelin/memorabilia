@@ -1,0 +1,275 @@
+AddConference
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        int AddConference(char *ConferenceName);
+
+Prototype in  Netbios.H
+
+Description   Add conference name to network.
+
+Arguments     ConferenceName  -  Conference Name to add to NetBIOS Table.  
+
+Returns       Valid Netbios Table Number
+              FAILURE  -  Check NBErr for error code.
+
+Example       
+
+
+AddUsername
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        int AddUsername(char *Username);
+
+Prototype in  Netbios.H
+
+Description   Adds username to local netbios table.
+
+Arguments     Username  -  Unique Username
+
+Returns       Valid Local Netbios Table Number
+              FAILURE  -  Check NBErr for error code.
+
+Example       
+
+
+CancelReceiveDatagrams
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void CancelReceiveDatagrams(void);
+
+Prototype in  Netbios.H
+
+Description   Tells the network that we are off the air.  Typically you'll 
+              send five just to make sure.
+
+Arguments     None.
+
+Returns       None.
+
+Example       
+
+
+ClearNcb
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void ClearNcb(struct Ncb *NcbPtr);
+
+Prototype in  Netbios.H
+
+Description   Loops through the Ncb structure making every byte null.
+
+Arguments     Structure to convert.
+
+Returns       None.
+
+Example       
+
+
+DeleteConference
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void DeleteConference(char *ConferenceName);
+
+Prototype in  Netbios.H
+
+Description   Deletes conference name from network.
+
+Arguments     ConferenceName  -  Existing Conference Name.
+
+Returns       None.
+
+Example       
+
+
+DeleteUsername
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void DeleteUsername(char *Username);
+
+Prototype in  Netbios.H
+
+Description   Removes your unique name from the local netbios table.
+
+Arguments     Username  -  Valid existing username.
+
+Returns       None.
+
+Example       
+
+
+IssueReceiveDatagramRequests
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void IssueReceiveDatagramRequests(void);
+
+Prototype in  Netbios.H
+
+Description   Tells the network that we're on the network and available for 
+              data.
+
+Arguments     None.
+
+Returns       None.
+
+Example       
+
+
+NetbiosAddName
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        unsigned char NetbiosAddName(char *Nam, int NamTyp);
+
+Prototype in  Netbios.H
+
+Description   If you pass the NamTyp of GROUP, it creates a new group call 
+              Nam.  If you pass the NamType of UNIQUE, that name is added to 
+              the exiting group.
+
+Arguments     Nam     -  group to create or username to add to existing group
+              NamTyp  -  Can be one of two types:
+                         UNIQUE  -  used for username
+                         GROUP   -  used for groups
+
+Returns       Conference name number or ILLEGAL_NAME_NUM on error. Check NBErr 
+              for adapter error code.
+
+Example       
+
+
+NetbiosCancelNcb
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void NetbiosCancelNcb(struct Ncb *NcbPtrNear);
+
+Prototype in  Netbios.H
+
+Description   
+
+Arguments     NcbPtrNear  -  
+
+Returns       None.
+
+Example       
+
+
+NetbiosDeleteName
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void NetbiosDeleteName(char *Nam);
+
+Prototype in  Netbios.H
+
+Description   Deletes a username or groupname that was added to the Netbios 
+              table.
+
+Arguments     Nam  -  Pointer to the username or groupname
+
+Returns       None.
+
+Example       
+
+
+NetbiosReceiveDatagram
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void NetbiosReceiveDatagram(struct Ncb *NcbPtr, struct DgStruct
+                                       *BufferPtrNear, unsigned BufferSize);
+
+Prototype in  Netbios.H
+
+Description   
+
+Arguments     NcbPtr         -  
+              BufferPtrNear  -  
+              BufferSize     -  
+
+Returns       None.
+
+Example       
+
+
+NetbiosRequest
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void NetbiosRequest(struct Ncb *NcbPtrNear);
+
+Prototype in  
+
+Description   
+
+Arguments     NcbPtrNear  -  
+
+Returns       None.
+
+Example       
+
+
+NetbiosSendDatagram
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void NetbiosSendDatagram(struct Ncb *NcbPtr, struct DbStruct
+                                       *BufferPtrNear, unsigned BufferSize);
+
+Prototype in  Netbios.H
+
+Description   
+
+Arguments     NcbPtr         -  
+              BufferPtrNear  -  
+              BufferSize     -  
+
+Returns       None.
+
+Example       
+
+
+ProcessReceivedDatagram
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void ProcessReceivedDatagram(unsigned int Index);
+
+Prototype in  Netbios.H
+
+Description   
+
+Arguments     Index  -  
+
+Returns       None.
+
+Example       
+
+
+SendMessage
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void SendMessage(char *Message, char *Username);
+
+Prototype in  Netbios.H
+
+Description   Clears both OriginName and OriginText fields from NCB and copies 
+              in the Username and Text to send.  Then sends the datagram out 
+              to the network.
+
+Arguments     Message   -  Text to send.
+              Username  -  Username
+
+Returns       None.
+
+Example       
+
+
+ServiceDatagramNcbs
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+Syntax        void ServiceDatagramNcbs(void);
+
+Prototype in  Netbios.H
+
+Description   
+
+Arguments     None.
+
+Returns       None.
+
+Example       
+

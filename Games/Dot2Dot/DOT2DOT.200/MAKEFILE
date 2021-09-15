@@ -1,0 +1,59 @@
+PROGNAME=Dot2Dot
+MODEL=l
+COMPILER=bcc
+LINKER=TLink
+BROOT=D:\Lang\BC
+
+!If $d(DEBUG)
+
+DEBLIB=d
+OBJSW=-c -m$(MODEL)
+LNKSW=/v /L$(BROOT)\Lib; 
+
+!Else
+
+OBJSW=-c -m$(MODEL)
+LNKSW=/x /L$(BROOT)\Lib; 
+
+!EndIf
+
+.c.obj:
+  $(COMPILER) $(OBJSW) {$< }
+
+EXE_dependencies =  \
+ dot2dot.obj \
+ mouse.obj \
+ netbios.obj \
+ egavga.obj \
+ goth.obj 
+ 
+$(PROGNAME).Exe :  $(EXE_dependencies)
+   $(LINKER) $(LNKSW)@&&|
+c0$(MODEL).obj+
+dot2dot.obj+
+mouse.obj+
+netbios.obj+
+egavga.obj+
+goth.obj
+$(PROGNAME)
+		# no map file
+emu.lib+
+math$(MODEL).lib+
+c$(MODEL).lib+
+graphics.lib
+|
+
+dot2dot.obj : dot2dot.c
+
+mouse.obj : mouse\mouse.c mouse\mouse.h
+  $(COMPILER) $(OBJSW) mouse\mouse.c
+
+netbios.obj : netbios\netbios.c netbios\netbios.h
+  $(COMPILER) $(OBJSW) netbios\netbios.c
+
+egavga.obj : $(BROOT)\bgi\egavga.obj
+  copy $(BROOT)\bgi\egavga.obj
+
+goth.obj : $(BROOT)\bgi\goth.obj
+  copy $(BROOT)\bgi\goth.obj
+

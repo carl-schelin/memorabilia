@@ -1,0 +1,143 @@
+----------2A00-------------------------------
+INT 2A - Microsoft/LANtastic NETWORK - INSTALLATION CHECK
+	AH = 00h
+Return: AH <> 00h if installed
+SeeAlso: INT 5C
+----------2A0000-----------------------------
+INT 2A - AT&T Starlan Extended NetBIOS (var length names) - INSTALLATION CHECK
+	AX = 0000h
+Return: AH = DDh
+SeeAlso: INT 5B
+----------2A01-------------------------------
+INT 2A - Microsoft/LANtastic NETWORK - EXECUTE NETBIOS REQUEST, NO ERROR RETRY
+	AH = 01h
+	ES:BX -> NCB (see INT 5C)
+Return: AL = NetBIOS error code
+	AH = 00h if no error
+	   = 01h on error
+SeeAlso: AH=04h, INT 5C
+----------2A02-------------------------------
+INT 2A - Microsoft Networks - SET NET PRINTER MODE
+	AH = 02h
+	???
+Return: ???
+----------2A0300-----------------------------
+INT 2A - Microsoft Networks - CHECK DIRECT I/O
+	AX = 0300h
+	DS:SI -> ASCIZ disk device name (may be full path or only drive
+		specifier--must include the colon)
+Return: CF clear if absolute disk access allowed
+Notes:	do not use direct disk accesses if this function returns CF set or the
+	  device is redirected (INT 21/AX=5F02h)
+	may take some time to execute
+SeeAlso: INT 13, INT 25, INT 26, INT 21/AX=5F02h
+----------2A04-------------------------------
+INT 2A - Microsoft/LANtastic NETWORK - EXECUTE NETBIOS REQUEST
+	AH = 04h
+	AL = 00h for error retry, 01h for no retry
+	ES:BX -> NCB (see INT 5C)
+Return: AX = 0000h for no error
+	AH = 01h, AL = error code
+Note:	request automatically retried (if AL=00h) on errors 09h, 12h, and 21h
+SeeAlso: AH=01h, INT 5C
+----------2A0500-----------------------------
+INT 2A - Microsoft/LANtastic NETWORK - GET NETWORK RESOURCE INFORMATION
+	AX = 0500h
+Return: AX = reserved
+	BX = number of network names available
+	CX = number of commands (NCBs) available
+	DX = number of sessions available
+----------2A06-------------------------------
+INT 2A - NETBIOS - NETWORK PRINT-STREAM CONTROL
+	AH = 06h
+	AL = 01h set concatenation mode (all printer output put in one job)
+	     02h set truncation mode (default)
+		 printer open/close starts new print job
+	     03h flush printer output and start new print job
+Return: CF set on error
+	    AX = error code
+	CF clear if successful
+Note:	subfunction 03h is equivalent to Ctrl/Alt/keypad-*
+SeeAlso: INT 21/AX=5D08h,5D09h, INT 2F/AX=1125h
+----------2A2001-----------------------------
+INT 2A - MS Networks or NETBIOS - ???
+	AX = 2001h
+	???
+Return: ???
+Note:	intercepted by DESQview 2.x
+----------2A2002-----------------------------
+INT 2A - Network - ???
+	AX = 2002h
+	???
+Return: ???
+Note:	called by MSDOS 3.30 APPEND
+----------2A2003-----------------------------
+INT 2A - Network - ???
+	AX = 2003h
+	???
+Return: ???
+Note:	called by MSDOS 3.30 APPEND
+----------2A80-------------------------------
+INT 2A - Microsoft Networks - BEGIN DOS CRITICAL SECTION
+	AH = 80h
+	AL = critical section number (00h-0Fh)
+	    01h DOS kernel, SHARE.EXE
+		apparently for maintaining the integrity of DOS/SHARE/NET
+		  data structures
+	    02h DOS kernel
+		ensures that no multitasking occurs while DOS is calling an
+		  installable device driver
+	    05h DOS 4+ IFSFUNC
+	    06h DOS 4+ IFSFUNC
+	    08h ASSIGN.COM
+Notes:	normally hooked to avoid interrupting a critical section, rather than
+	  called
+	the handler should ensure that none of the critical sections are
+	  reentered, usually by suspending a task which attempts to reenter
+	  an active critical section
+SeeAlso: AH=81h, AH=82h, AH=87h, INT 21/AX=5D06h,5D0Bh
+----------2A81-------------------------------
+INT 2A - Microsoft Networks - END DOS CRITICAL SECTION
+	AH = 81h
+	AL = critical section number (00h-0Fh) (see AH=80h)
+Notes:	normally hooked rather than called
+	the handler should reawaken any tasks which were suspended due to an
+	  attempt to enter the specified critical section
+SeeAlso: AH=80h, AH=82h, AH=87h
+----------2A82-------------------------------
+INT 2A - Microsoft Networks - END DOS CRITICAL SECTIONS 0 THROUGH 7
+	AH = 82h
+Notes:	called by the INT 21h function dispatcher for function 0 and functions
+	  greater than 0Ch except 59h, and on process termination
+	the handler should reawaken any tasks which were suspended due to an
+	  attempt to enter one of the critical sections 0 through 7
+SeeAlso: AH=81h
+----------2A84-------------------------------
+INT 2A - Microsoft Networks - KEYBOARD BUSY LOOP
+	AH = 84h
+Note:	similar to DOS's INT 28h
+SeeAlso: INT 28
+----------2A87-------------------------------
+INT 2A - ??? - CRITICAL SECTION
+	AH = 87h
+	AL = start/end
+	    00h start
+	    01h end
+Note:	called by PRINT.COM
+SeeAlso: AH=80h,81h
+----------2A89-------------------------------
+INT 2A - Network - ???
+	AH = 89h
+	AL = ???  (ASSIGN uses 08h)
+	???
+Return: ???
+----------2AC2-------------------------------
+INT 2A - Network - ???
+	AH = C2h
+	AL = subfunction
+	    07h ???
+	    08h ???
+	BX = 0001h
+	???
+Return: ???
+Note:	called by DOS 3.30 APPEND

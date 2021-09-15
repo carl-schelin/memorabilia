@@ -1,0 +1,135 @@
+----------5C---------------------------------
+INT 5C - NETBIOS INTERFACE
+	ES:BX -> Network Control Block (see below)
+Return: AL = status
+	    00h successful
+	    01h bad buffer size
+	    03h invalid NETBIOS command
+	    05h timeout
+	    06h receive buffer too small
+	    08h bad session number
+	    09h LAN card out of memory
+	    0Ah session closed
+	    0Bh command has been cancelled
+	    0Dh name already exists
+	    0Eh local name table full
+	    0Fh name still in use, can't delete
+	    11h local session table full
+	    12h remote PC not listening
+	    13h bad NCB_NUM field
+	    14h no answer to CALL or no such remote
+	    15h name not in local name table
+	    16h duplicate name
+	    17h bad delete
+	    18h abnormal end
+	    19h name error, multiple identical names in use
+	    1Ah bad packet
+	    21h network card busy
+	    22h too many commands queued
+	    23h bad LAN card number
+	    24h command finished while cancelling
+	    26h command can't be cancelled
+	    FFh NETBIOS busy
+Note:	Sytek PCnet card uses DMA 3.
+SeeAlso: INT 5B
+
+Format of Network Control Block:
+Offset	Size	Description
+ 00h	BYTE	ncb_command (see below)
+ 01h	BYTE	ncb_retcode
+ 02h	BYTE	ncb_lsn
+ 03h	BYTE	ncb_num
+ 04h	DWORD	-> ncb_buffer
+ 08h	WORD	ncb_length
+ 0Ah 16 BYTEs	ncb_callname
+ 1Ah 16 BYTEs	ncb_name
+ 2Ah	BYTE	ncb_rto
+ 2Bh	BYTE	ncb_sto
+ 2Ch	DWORD	-> ncb_post  	/* int (far *ncb_post)(); */
+ 30h	BYTE	ncb_lana_num
+		00h-03h IBM NetBIOS specs
+		F0h-FFh Eicon NABios interface
+ 31h	BYTE	ncb_cmd_cplt
+ 32h 14 BYTEs	ncb_reserve
+
+Values for "ncb_command" field in NCB (or with 80h for non-waiting call):
+	10h start session with NCB_NAME name (call)
+	11h listen for call
+	12h end session with NCB_NAME name (hangup)
+	14h send data via NCB_LSN
+	15h receive data from a session
+	16h receive data from any session
+	17h send multiple data buffers
+	20h send unACKed message (datagram)
+	21h receive datagram
+	22h send broadcast datagram
+	23h receive broadcast datagram
+	30h add name to name table
+	31h delete name from name table
+	32h reset adapter card and tables
+	33h get adapter status (see structure "astatus" below)
+	34h status of all sessions for name (see structure "sstatus" below)
+	35h cancel
+	36h add group name to name table
+	70h unlink from IBM remote program (no F0h function)
+	71h send data without ACK
+	72h send multiple buffers without ACK
+	78h find name
+	79h token-ring protocol trace
+
+Format of structure "name":
+Offset	Size	Description
+ 00h 16 BYTEs nm_name
+ 10h	BYTE  nm_num
+ 11h	BYTE  nm_status
+
+Format of structure "astatus":
+Offset	Size	Description
+ 00h  6 BYTEs as_id
+ 06h	BYTE  as_jumpers
+ 07h	BYTE  as_post
+ 08h	BYTE  as_major
+ 09h	BYTE  as_minor
+ 0Ah	WORD  as_interval
+ 0Ch	WORD  as_crcerr
+ 0Eh	WORD  as_algerr
+ 10h	WORD  as_colerr
+ 12h	WORD  as_abterr
+ 14h	DWORD as_tcount
+ 18h	DWORD as_rcount
+ 1Ch	WORD  as_retran
+ 1Eh	WORD  as_xresrc
+ 20h  8 BYTEs as_res0
+ 28h	WORD  as_ncbfree
+ 2Ah	WORD  as_ncbmax
+ 2Ch	WORD  as_ncbx
+ 2Eh  4 BYTEs as_res1
+ 32h	WORD  as_sespend
+ 34h	WORD  as_msp
+ 36h	WORD  as_sesmax
+ 38h	WORD  as_bufsize
+ 3Ah	WORD  as_names
+ 3Ch 16 name structures  as_name
+
+Format of structure "sstatus":
+Offset	Size	Description
+ 00h	BYTE	number of sessions being reported
+ 01h	BYTE	number of sessions with this name
+ 02h	BYTE	number of outstanding receive datagrams
+ 03h	BYTE	number of outstanding ReceiveAnys
+ 04h	var	session structures (see below)
+
+Format of structure "session":
+Offset	Size	Description
+ 00h	BYTE	local session number
+ 01h	BYTE	state
+		01h listen pending
+		02h call pending
+		03h session established
+		04h hangup pending
+		05h hangup done
+		06h session aborted
+ 02h 16 BYTEs	local name
+ 12h 16 BYTEs	remote name
+ 22h	BYTE	number of outstanding receives
+ 23h	BYTE	number of outstanding sends/chainsends
