@@ -1,0 +1,12 @@
+dosver.com : dosver.exe
+  exe2bin dosver dosver.com
+  del dosver.exe
+  del dosver.map
+  del dosver.obj
+
+dosver.exe : dosver.obj
+  tlink dosver.obj;
+
+dosver.obj : dosver.asm
+  tasm dosver.asm;
+

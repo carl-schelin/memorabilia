@@ -1,0 +1,52 @@
+
+Command: DosVer.Com
+
+Syntax: DosVer
+
+Brief: Returns an errorlevel based on the major version of Dos running.
+
+Explanation: DosVer returns the major Dos version running. This can be 
+    useful when updating files based on a Dos version requirement. 
+
+Example:
+
+      @Echo Off
+      DosVer
+      If ErrorLevel 7 Goto Dos7
+      If ErrorLevel 6 Goto Dos6
+      If ErrorLevel 5 Goto Dos5
+      If ErrorLevel 4 Goto Dos4
+      If ErrorLevel 3 Goto Dos3
+      If ErrorLevel 2 Goto Dos2
+      If ErrorLevel 1 Goto Dos1
+      Goto End
+      :Dos1
+      Echo Dos v1.x
+      Goto End
+      :Dos2
+      Echo Dos v2.x
+      Goto End
+      :Dos3
+      Echo Dos v3.x
+      Goto End
+      :Dos4
+      Echo Dos v4.x
+      Goto End
+      :Dos5
+      Echo Dos v5.x
+      Goto End
+      :Dos6
+      Echo Dos v6.x
+      Goto End
+      :Dos7
+      Echo Dos v7.x
+      Goto End
+      :End
+
+Note: DosVer was created to allow the installation of Microsoft LAN Manager
+    NetWkSta.Exe. Since there is a NetWkSta.Exe for Dos 3, 4 and 5, I needed
+    a way of automatic installation. Putting the logic of DosVer in the 
+    install batch file installed the correct version of NetWkSta.Exe.
+
+Author: Carl Schelin - (703) 878-4391
+
