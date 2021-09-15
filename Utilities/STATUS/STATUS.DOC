@@ -1,0 +1,35 @@
+
+Command: Status.Exe
+
+Syntax: Status [xxx xxx xxx]
+
+Brief: Status shows you the installed equipment in a station.
+
+Explanation: Status will show you how much memory is installed in your system, 
+   whether you have a math chip installed and various other functions. I have 
+   noticed that it will show 3 parallel ports when you are attached to a 
+   network no matter how many you have. This is a function of the MSRedir. 
+
+Example: 
+         ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+         บ     Computer: IBM PC AT         Keyboard: num cap INS scr บ
+         บ     ROM BIOS: 09/17/86             Mouse: None            บ
+         บ     DOS vers: 3.30                Floppy: 1 Drive         บ
+         บ  Clock Board: No                Parallel: 3 Ports         บ
+         บ    Math Chip: Yes                 Serial: 1 Port          บ
+         บ   EMS Driver: 4.0                   Game: Not Installed   บ
+         บ  Video Board: Enhanced Graphics Adapter                   บ
+         บ Total Memory: 5120k Installed                             บ
+         บ    EMS Pages: 256 (4096k)                    Written by   บ
+         บ   Free Pages: 16 (256k)                     Carl Schelin  บ
+         บ                                                           บ
+         บ                        Memory Map                         บ
+         บ    ฐฐฐฐฐฐฐฑฑฑฑฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒฒ    บ
+         บ     640K 384K Ext             4096K Exp                   บ
+         ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+Note: This was written because I couldn't find a program that would tell me 
+   how much memory was actually installed. I could find loads that would tell 
+   me how much memory was available to me. 
+
+Author: Carl Schelin - (703) 659-9865

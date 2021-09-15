@@ -1,0 +1,2 @@
+status.exe : status.c status.h
+    bcc status.c tcxlbcs.lib
