@@ -1,0 +1,29 @@
+
+Command: Alias.Exe
+
+Syntax: Alias [&] [Domain_Name]
+
+Brief: Alias displays all Aliases and their matching Name Service names. 
+
+Explanation: Alias loops through the Name Service reading an Alias and 
+    displaying the Username that matches it. If it can't find a Username, an 
+    error is displayed instead.
+You can use the "&" Command-Line option to display only the undefined 
+    Usernames. 
+If you specify a Domain_Name, Alias will only search it. You may also specify 
+    the "&" option to get only the undefined Usernames located in the domain 
+    you choose.
+
+Example: 
+
+ALIAS Name Generator v1.1, Copyright (C) 1990, by Carl Schelin
+Getting Aliases from the Name Service...
+                     SYSP:HQ:GTSI - Super_Power:HQ:GTSI
+                      TCS:HQ:GTSI - Schelin_Carl:NYMA:GTSI
+                      TSR:HQ:GTSI - *** ERROR: Alias Not Found!
+                   SYSP:NYMA:GTSI - Super_Power:HQ:GTSI
+
+Note: This program was written to test some routines for a larger program. I 
+    decided to refine it a bit and send it out. I hope you like it.
+
+Author: Carl Schelin - (703) 659-9865
