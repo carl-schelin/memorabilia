@@ -1,0 +1,3 @@
+space.exe : space.c
+   bcc space.c
+   
