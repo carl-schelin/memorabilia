@@ -1,0 +1,12 @@
+doweek.com : doweek.exe
+  exe2bin doweek doweek.com
+  del doweek.exe
+  del doweek.map
+  del doweek.obj
+
+doweek.exe : doweek.obj
+  tlink doweek.obj;
+
+doweek.obj : doweek.asm
+  tasm doweek.asm;
+
