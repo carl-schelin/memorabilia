@@ -1,0 +1,28 @@
+
+Command: DirUser.Exe
+
+Syntax: DirUser [Valid_UserName]
+
+Brief: DirUser searches the Name Service for information about the UserName.
+
+Explanation: DirUser searches the Name Service for Group Memberships and 
+    Aliases that point to Valid_UserName. If you don't specify a UserName, 
+    DirUser assumes the current user logged into this station. Once DirUser 
+    has the information, it is displayed in three windows. The Cyan window in 
+    the upper-left contains all the Groups, the Green window at the 
+    lower-middle contains all Aliases and the Red window at the upper-right 
+    contains basic user statistics. Pressing any key will stop DirUser.
+
+Note: This program was written so I could get info about the user before I 
+    delete them. Then I can delete all groups and aliases without having to 
+    search it. I didn't want to use a database because I am a command-line 
+    type of person. If I do work on the system without loading a database 
+    program, then the database is out of date and I have to reload.
+
+Update: I have since found a situation where the correct information is not
+    returned.  If the user has been created in a different domain and has
+    aliases or memberships in the home domain and you run DIRUSER in his 
+    domain, you will not see those aliases/memberships.  Since I don't have 
+    access to a 3+Share system, I can't work on it.  TCS:08-19-92
+
+Author: Carl Schelin - (703) 670-7019 / (202) 484-1062

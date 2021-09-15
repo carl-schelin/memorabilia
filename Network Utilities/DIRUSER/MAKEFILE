@@ -1,0 +1,3 @@
+diruser.exe : diruser.c
+   bcc diruser.c d3l-tc.lib cxltcs.lib
+
