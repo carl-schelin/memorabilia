@@ -1,0 +1,3 @@
+check.exe : check.c
+    cl check.c
+    
