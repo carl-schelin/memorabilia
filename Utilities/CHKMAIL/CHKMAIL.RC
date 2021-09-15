@@ -1,0 +1,21 @@
+/****************************************************************************
+
+
+CHKMAIL.RC
+
+produced by Borland Resource Workshop
+
+
+*****************************************************************************/
+
+#include "chkmail.h"
+
+DIALOG_1 DIALOG 85, 73, 194, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About CheckMail"
+FONT 8, "MS Sans Serif"
+{
+ DEFPUSHBUTTON "OK", IDOK, 72, 96, 50, 14
+ GROUPBOX "", IDC_GROUPBOX1, 17, 11, 165, 79, BS_GROUPBOX
+}
+
