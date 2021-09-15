@@ -1,0 +1,149 @@
+
+     UNTIL.EXE v1.0 - Copyright 1996 by Carl Schelin, All Rights Reserved
+    컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+
+    Until is a utility that pauses and wait for input. The screen saver can be 
+    disabled at the prompt. A file 38 characters wide and 9 lines high can be 
+    displayed in the center of the screen. Using escape sequences colors can 
+    be used to emphasize the message.
+
+    Purpose
+
+    Currently we use many different programs in different ways to pause the 
+    network gateways when exiting. Some default to a reboot, others sleep 
+    until a designated time.
+
+    The sleep program is what we want to use but there are a couple of 
+    deficiencies. It halts so you have to Ctrl+Break to exit the program. 
+    There is no way to tell if something is wrong.
+
+    Until is a combination of these utilities. Until uses four parameters to 
+    set the time, read in a file and define the screen saver module.
+
+    Syntax
+
+    Until takes five parameters. Three of them are optional. Time is required.
+
+    1) Time. This must be in the hh:mm:ss format including padded numbers. It 
+       must be in a 24 hour format as well. For example, 8:23pm would be 
+       20:23:00. Until checks the passed time against this format. If you do 
+       not pass it correctly, Until will not automatically exit.
+
+    2) Filename. This must have an extension. Pass the parameter as 
+       filename.ext. The path can be included. You can have a central area for 
+       multiple applications.
+
+    3) NoSleep. This disables the screen saver funtion. This would be used in 
+       case of an error. You pass an error file and then turn off the screen 
+       saver. Whomever is watching the systems will notice the obvious 
+       problem.
+
+    4) Novell. This changes the screen saver activity prompt to the normal 
+       Novell activity prompt. 
+
+    5) Short. This reduces the screen saver start time from 30 seconds to 5 
+       seconds. 
+
+    The parameters can be passed in any order and case is not sensitive. The 
+    only restrictions are in the Time format, must be in 24 hour format with 
+    hh:mm:ss padded with zeros and the Filename parameter which requires an 
+    extension (or at least the trailing dot).
+
+    On Exit
+
+    When Until exits, an errorlevel code is also returned. If you don't pass 
+    the exit time (a required parameter) Until with exit with an errorlevel of 
+    2. If Until completes at the proper time -or- you press any key other than 
+    <Esc>, Until will return an errorlevel of 0. If you press <Esc>, an 
+    errorlevel of 1 is returned. This lets you trap for a halt of the batch 
+    file and seamlessly exit the batch file without the "Admin Stomp" of 
+    pressing <Ctrl><Break> until the batch file stops.
+
+    Special
+
+    This was written using the TeSseRact C eXtended Library (TCXL). It is a 
+    library of windowing and data entry routines. As a result, the text file 
+    can use some escape characters to create a colorful text message (see the 
+    example file: ERROR.TXT).
+
+    The following escape codes can be used:
+
+    Escape Code  Function
+    -----------  --------
+        +        Increase text attribute
+        -        Decrease text attribute
+        Ax       Set text attribute to (x)
+        Fx       Set foreground text attribute to (x)
+        Bx       Set background text attribute to (x)
+        I        Toggle intensity
+        L        Toggle blink
+        X        Reverse text attribute
+        Rx       Set window row coordinate to (x)
+        Cx       Set window column coordinate to (x)
+        Ex       Erase (x) where (x) is one of the following:
+          W      Entire window, home cursor
+          L      To end-of-line
+          S      To end-of-window
+        Dxy      Display (x) character (y) times
+    
+    You must pass <Esc>+<Esc>-. You cannot pass <Esc>+-.
+
+    The coordinate codes must follow the window itself. 38 columns wide and 9 
+    rows deep.
+    
+    The foreground attributes are:
+
+    @ - Black   D - Red        H - Dk. Grey    L - Lt. Red
+    A - Blue    E - Magenta    I - Lt. Blue    M - Lt. Magenta
+    B - Green   F - Brown      J - Lt. Green   N - Yellow
+    C - Cyan    G - Lt. Grey   K - Lt. Cyan    O - White
+    
+    The background attributes are: 
+
+      0 to  15 - Black         64 to  79 - Red     
+     16 to  31 - Blue          80 to  95 - Magenta 
+     32 to  47 - Green         96 to 111 - Brown   
+     48 to  63 - Cyan         112 to 127 - Lt. Grey
+
+    To use the <Esc>Ax escape sequence, use the foreground attributes in 
+    numerical order with Black being 0. Add them to the background color you 
+    want to use and that's the character you need to use to create the 
+    combined color for that sequence.
+
+    For example, to put a file with the foreground color of white and a 
+    background of red you would add 15 (White) to 64 (the start of the red 
+    background) and get 79 (64 + 15). Then, in the text file, using the <Alt> 
+    key and the keypad, enter <Esc> (<Alt>27), <A>, and <79>(Alt>79) to come 
+    up with <Esc>AO.
+
+    You are limited to 255 characters per line in the file.
+
+    Example
+
+    If the current time is 8pm and you want Until to restart the batch file at 
+    4am. You want to pass a standard message file but you do want the screen 
+    saver to kick in you would pass:
+
+    C:\>until 04:00:00 message.txt
+
+    Until will start, display the time Until will exit at and the current 
+    time. Within 30 seconds, the screen saver will kick in. At 4am, Until will 
+    exit and the batch file will continue.
+
+    Shareware
+
+    Of course there's always a pitch. I generally write these utilities
+    for use on my current LANs. If you want to use it, great. To continue
+    to use BatchIt past the two week trial period you must register.
+    Please send $5.00 to:
+
+    Carl Schelin
+    3925 Penshurst LN. #101
+    Woodbridge VA 22192
+
+    Good luck and may the farce be with you.
+
+    Release Information
+
+    v1.0    Initial release
+

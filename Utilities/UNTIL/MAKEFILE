@@ -1,0 +1,24 @@
+OBJS=\
+until.obj \
+makefile
+
+#   cl *.obj $(DEFINED) /FeUntil.Exe /F 1000 /link /SE:300 /NOE /NOI tcxlm6$(MODEL).lib
+#   link /E /SE:300 /Stack:0x3000 @&&|
+
+MODEL=L
+SWITCHES=/A$(MODEL) /Od /Gs /Gd /W4 /c
+
+.c.obj:
+  cl $(SWITCHES) {$< }
+
+metal.exe : $(OBJS)
+   link /E @&&|
+until.obj /farcall
+Until.Exe /NOE /NOI
+NUL
+tcxlm6$(MODEL).lib
+;
+|
+
+until.obj : until.c
+
