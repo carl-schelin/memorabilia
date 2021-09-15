@@ -1,0 +1,49 @@
+
+SCREEN.COM : BBS Utility program from Carl Schelin
+                                      67 Chestnut Drive
+                                      Stafford, VA  22554
+                                      (703) 659-6648
+
+
+Reason for Program:
+     At work, we run TComm and have a menu system for our customers to find
+     the files that they want. Since we sometimes have multiple screens and I
+     was tired of waiting for TComm to initialize, I wrote this program. I
+     soon discovered that it could be used for any multiple screen type file.
+     I fixed it up, added the popup window as the default and sent it out.
+
+How the Program works:
+     It is a very simple program. You have only three options:
+
+     1) Screen
+     2) Screen <filename>
+     3) Screen <filename> [Lines]
+
+     1 shows the popup screen with the name of the program and how the command
+          line should look.
+     2 shows the filename specified at 23 lines per screen. (Default for
+          PCBoard.)
+     3 lets you assign the number of lines you wish to show. TComm is 22 lines
+          per screen and PCBoard is 23. (Hence the default of 23.)
+
+Program Notes:
+     This program checks for the Escape sequence Clear Screen (Esc[2J) at the
+     beginning of a text file. This is what shows the difference between a
+     scrolling file (Test) and a multiple menu type file (TestG). If the Escape
+     sequence is not the first four characters in the file, you may see your
+     screens look a little different.
+
+Finally:
+     If you find any bugs, let me know. If you think of anything else that you
+     might want to see in such a simple program, let me know. I am more than
+     willing to program any new options into the program. I am not asking for
+     any monetary remuneration. This program is just a simple utility that I
+     thought could make the job a little easier at work.
+                                                      
+
+                                             Carl Schelin
+                                             Sysop - The Conventions BBS
+                                             300-19200 baud - 120meg online
+                                             1700+ files - 24 hours 7 days
+                                             (Up soon)
+
