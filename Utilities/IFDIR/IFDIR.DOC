@@ -1,0 +1,36 @@
+
+Command: IfDir.Exe
+
+Syntax: IfDir [d:]<pathname>
+
+Brief: Check for the Existance of a Drive and Subdirectory.
+
+Explanation: Use IfDir to verify the existance of a path. IfDir returns an 
+   ErrorLevel of 2 if you forgot to put the path in, ErrorLevel 1 if the Path 
+   does not exist and ErrorLevel 0 if it does exist.
+
+Example:
+
+    @Echo Off
+    IfDir %1
+    If ErrorLevel 2 Goto NoPath
+    If ErrorLevel 1 Goto NoFound
+    Goto Found
+    :NoPath
+    Echo No Path Specified. USAGE: IfDir [D:[Path]]
+    Goto Dos
+    :NoFound
+    Echo Not a valid subdirectory.
+    Goto Dos
+    :Found
+    Echo Found %1!
+    Goto Dos
+    :Dos
+
+Note: I wrote this because of two things. We have a MastLog.Bat file that all 
+   users access. In this file we do two things, check the H:\ space used and 
+   write a Stat.Ifo to the Net subdirectory (3n Stat > H:\Net\Stat.Ifo) so we 
+   can collect the Ethernet Addresses. IFDir is used to make sure that H:\ is 
+   there for NCU and that H:\Net is there for 3N Stat.
+
+Author: Carl Schelin - (703) 878-4391

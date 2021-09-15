@@ -1,0 +1,3 @@
+ifdir.obj : ifdir.c
+  bcc ifdir.c
+
