@@ -1,0 +1,93 @@
+PROGNAME=Dot2Dot
+MODEL=l
+COMPILER=bcc
+LINKER=TLink
+BROOT=D:\Lang\BC
+
+!If $d(DEBUG)
+
+DEBLIB=d
+OBJSW=-c -H=Dot2Dot.Sym -w -m$(MODEL)
+LNKSW=/v /L$(BROOT)\Lib; 
+
+!Else
+
+OBJSW=-c -H=Dot2Dot.Sym -Ox -w -m$(MODEL)
+LNKSW=/x /L$(BROOT)\Lib; 
+
+!EndIf
+
+.c.obj:
+  $(COMPILER) $(OBJSW) {$< }
+
+EXE_dependencies =  \
+ button.obj \
+ console.obj \
+ desktop.obj \
+ drawbox.obj \
+ fillbox.obj \
+ intro.obj \
+ main.obj \
+ mouse.obj \
+ player.obj \
+ qdialog.obj \
+ replay.obj \
+ utility.obj \
+ egavga.obj \
+ goth.obj
+ 
+$(PROGNAME).Exe :  $(EXE_dependencies)
+   $(LINKER) $(LNKSW)@&&|
+c0$(MODEL).obj+
+button.obj+
+console.obj+
+desktop.obj+
+drawbox.obj+
+fillbox.obj+
+intro.obj+
+main.obj+
+mouse.obj+
+player.obj+
+qdialog.obj+
+replay.obj+
+utility.obj+
+egavga.obj+
+goth.obj
+$(PROGNAME)
+		# no map file
+emu.lib+
+math$(MODEL).lib+
+c$(MODEL).lib+
+graphics.lib
+|
+
+button.obj  : button.c dot2dot.h mouse.h
+
+console.obj : console.c dot2dot.h mouse.h
+
+desktop.obj : desktop.c dot2dot.h
+
+drawbox.obj : drawbox.c dot2dot.h
+
+fillbox.obj : fillbox.c dot2dot.h mouse.h
+
+intro.obj   : intro.c dot2dot.h mouse.h
+
+main.obj    : main.c dot2dot.h mouse.h
+
+mouse.obj   : mouse.c mouse.h
+
+player.obj  : player.c dot2dot.h mouse.h
+
+qdialog.obj : qdialog.c dot2dot.h mouse.h
+
+replay.obj  : replay.c dot2dot.h
+
+utility.obj : utility.c dot2dot.h mouse.h
+
+egavga.obj  : $(BROOT)\bgi\egavga.obj
+  copy $(BROOT)\bgi\egavga.obj
+
+goth.obj    : $(BROOT)\bgi\goth.obj
+  copy $(BROOT)\bgi\goth.obj
+
