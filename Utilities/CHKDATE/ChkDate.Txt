@@ -1,0 +1,31 @@
+
+Command: ChkDate.Exe
+
+Syntax: ChkDate <File One> <File Two>
+
+Brief: Sets ErrorLevel on whether one file is newer than another.
+
+Explanation: This function returns an errorlevel 1 if File One is newer than 
+File Two. If you don't pass enough parameters, errorlevel 2 is returned. If 
+ChkDate can't open one or the other files, it returns an errorlevel of 3.
+
+Example:
+
+     @Echo Off
+     ChkDate C:\3Net\3Driver\IDP.Sys G:\Util\Install\3Net\3Driver\IDP.Sys
+     If ErrorLevel 3 Goto ByPass
+     If ErrorLevel 2 Goto ByPass
+     If ErrorLevel 1 Goto CopyFile
+     Goto Dos
+     :CopyFile
+     Copy G:\Util\Install\3Net\3Driver\IDP.Sys C:\3Net\3Driver\IDP.Sys > Nul
+     :ByPass
+     Echo ERROR: Can't open file or not enough parameters...
+     :Dos
+
+Note: This was written because I occasionally get upgrade files. Since I have 
+about 150 users on the network, it's a pain to walk to everyone just to copy a 
+couple of files. So I wrote this and put it in my MastLog.Bat file. 
+
+Author: Carl Schelin - (703) 878-4391
+
