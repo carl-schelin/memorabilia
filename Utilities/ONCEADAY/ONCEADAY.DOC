@@ -1,0 +1,37 @@
+
+Command: OnceADay.Exe
+
+Syntax: OnceADay Verification_FileName
+
+Brief: Returns an ErrorLevel on the match of Today and Verification_FileName's 
+    date.
+
+Explanation: OnceADay takes a Filename that you specified on the Command-Line 
+    and matches it to today's date. If the date the Filename was last written 
+    to is older than today's date, OnceADay returns an ErrorLevel of 1. 
+
+Example:
+
+    @Echo Off
+    If "%1"=="" Goto NoParms
+    OnceADay %1
+    If ErrorLevel 2 Goto NoOpen
+    If ErrorLevel 1 Goto NoMatch
+    Echo no upgrades or checks...
+    Goto Dos
+    :NoOpen
+    Echo Can't open files
+    Goto Dos
+    :nomatch
+    Echo upgrade in process...
+    Goto Dos
+    :NoParms
+    Echo Forgot the parameters...
+    :Dos
+
+Note: I use this program in my MastLog.Bat file to significantly speed up 
+    network access to those users that reboot their computers more than once a 
+    day. This way, I can execute some programs that only need to be done one 
+    time rather than every time they login.
+
+Author: Carl Schelin - (703) 659-9865
