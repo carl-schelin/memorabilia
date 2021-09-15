@@ -1,0 +1,35 @@
+
+Command: Lock.Exe
+
+Syntax: Lock NumOn | NumOff | CapsOn | CapsOff | AllOn | AllOff
+
+Brief: Toggles Numlock and Capslock from a batch file.
+
+Explanation: Use this program to set the Numlock and Capslock on or off from
+   a batch file or the command line. 
+
+Example: (Autoexec.Bat)
+
+     @Echo Off
+     Path C:\;C:\Dos; ... 
+     Prompt $p$g
+     Lock NumOff
+     Echo 3+ Workstation Startup Batch file
+     Cd\3Net
+     Runminds ...
+     NetBios
+     Minses
+     MSReDir
+     SetName $$3com$$
+     PrtSc
+     Logon
+     :Abort
+
+Note: I wrote this because I was tired of pressing the Numlock key everytime 
+   I booted the computer. I also run a few games that must have the Numlock
+   on.
+
+Author: Carl Schelin - (703) 878-4391
+
+Language: Turbo C++ v1.0p1 and CXL v5.1p1
+
