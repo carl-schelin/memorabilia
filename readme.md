@@ -1,9 +1,9 @@
-=== Overview
+### Overview
 
 This repo contains all the source code for games and utilities I created between apparently 1979 and 1997 or so. I thought I'd share them both for the Memorabilia per the repo name, and to show that I did some coding back in the day :) 
 
 
-=== CXL/TCXL
+### CXL/TCXL
 
 I was looking for a DOS based Windowing library and after a few failed attempts, I found Mike Smedley's CXL library. I used it and purchased it simply because I could get it to work :) Several of the programs in the repository use the CXL library to create windowed applications. You can tell by seeing cxlxxxx in the include lines.
 
@@ -12,12 +12,12 @@ Later a company called Tesseract that had been creating TSR (Terminate and Stay 
 Of course neither of these libraries are available (although I think I might still have the diskette I got from Mike). And without the TurboC or Borland C++ compilers, it's unlikely they'll be compilable any time soon.
 
 
-=== Dungeons & Dragons
+### Dungeons & Dragons
 
 This directory structure contains my Computerized Dungeon Master. I wrote it to help me run my games. I'd have a laptop (a small Toshiba 1100+) and could enter character information. I gradually improved it and even converted it to C in order to learn how to program in C.
 
 
-=== Games
+### Games
 
 This one contains my very first program that I created for a purpose, CARWARS.BAS. A program that helped you create vehicles for Steve Jackson's Car Wars game. In the ORIGINAL directory contains the same program but converted to C.
 
@@ -26,17 +26,17 @@ It also contains my BlokBust/Dot2Dot program I created. It is the old draw a gri
 Third is my 3D StarTrek program. It was based on the Super StarTrek from the Unix days but I added graphics and a console to it. Once I even got a writeup in one of the gaming magazines that talked about Star Trek games.
 
 
-=== Internet Tools
+### Internet Tools
 
 
 
-=== Network Programs 
+### Network Programs 
 
 
-=== Network Utilities
+### Network Utilities
 
 
 
-=== Utilities
+### Utilities
 
 
