@@ -1,0 +1,3 @@
+chkmail.exe : chkmail.c
+  bcc chkmail.c d3l-tc.lib
+

@@ -1,0 +1,34 @@
+
+Command: ChkMail.Exe
+
+Syntax: ChkMail
+
+Brief: Tells you whether you have mail and returns an errorlevel.
+
+Explanation: Use ChkMail to determine whether you have mail on a 3+Share 
+network. If you have mail, you will see a message and an errorlevel 1 will be 
+returned. If you do not have mail, errorlevel 0 will be returned. If there is 
+any error, an errorlevel of 2 is returned. I used the 3+Developers Library 
+function D3LCheckForMail to determine whether you have mail.
+
+Example:
+
+     @Echo Off
+     ChkMail
+     If ErrorLevel 2 Goto Dos
+     If ErrorLevel 1 Goto MailCall
+     Goto Dos
+     :MailCall
+     Echo Loading 3+Mail...
+     H:
+     Cd\MailBox
+     G:\Mail\Mail H:\MailBox /DisplayType=E
+     Goto NoMail
+     :Dos
+
+Note: I wrote this to do two things. In the menu system I use, I can assign a 
+program to a function key. I assigned ChkMail to F4. If there is mail, I go 
+into mail, otherwise I return to menus. I can also check for mail before 
+loading menus and send the user right in.
+
+Author: Carl Schelin - (703) 659-9865
