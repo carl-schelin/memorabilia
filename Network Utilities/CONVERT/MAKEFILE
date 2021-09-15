@@ -1,0 +1,3 @@
+convert.exe : convert.c
+  bcc convert.c d3l-tc.lib
+

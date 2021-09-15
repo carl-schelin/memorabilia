@@ -1,0 +1,59 @@
+
+Command: Convert.Exe
+
+Syntax: Convert [User | Admin | Server | Default]
+
+Brief: Convert modifies or displays your Capability Class.
+
+Explanation: Convert allows any 3+Share user the ability to modify their 
+Capability Class to any of the available User Types.  Typing Default will 
+revert you to your actual Capability Class.  I extract it from the Name 
+Service to get the correct one.  
+
+3+Share stores your user information in the Login Library which is located in 
+your PC's memory.  This information consists of your Three-part Username, Mail 
+Server name, Share Server name and Capability Class.  Your Capability Class 
+can be one of three settings: User (02), Admin (03) or Server (04).  This 
+information is stored in the 15xx:0000 to 20xx:0000 range.  
+
+Convert searches memory from 0000:0000 to 7D00:0010 (0 to 32,000 bytes) until 
+it finds the Domain<NULL>Organization<NULL>Login Name<NULL> pattern.  The 
+third byte past the last NULL should be a 02, 03, or 04.  The first and second 
+byte pass NULL is your encrypted password.  Convert then modifies it to 
+reflect the setting you requested.
+
+I wrote this program for two reasons.  The first one was to see if it could be 
+done.  Being a curious sort, I had heard that there was a way to modify a user 
+to allow anyone to be an Admin.  Second, I have this thing about security.  I 
+modify my password to the Network every 3 or 4 months and modify the network 
+passwords every 3 months.  Since anyone could make themselves an Admin, 
+security is basically shot.
+
+Note: For those who are as security conscious as I, anyone can login as the 
+server and create and delete any sharename.  The user is changed to an 
+admin, adds a user to the network with the same number of characters as the 
+server, logs in as the user, makes him a server, debugs memory to change the 
+username to the servername and now can add any sharename he wishes.  If you 
+are using 1.3.1 share or later, you can create a sharename to a root 
+directory.  
+
+If you are using 3+Route and have the phone number and network number, you can 
+send a message to anyone on that network.  Watch the packets coming in from 
+the Route server using a packet watch program.  When you see an address come 
+in, make a note of it.  Create a server in their domain and org.  Login as the 
+server user for that server.  Create a directory on the remote server pointing 
+to the 3Plus directory (or any other one).  Link to the directory and you're 
+on your way.  It'll be a little slow, but accessible.  
+
+Fixes: The only thing that I can think of to stop a majority of this from 
+happening is to make your ShrList read-only.  Then someone couldn't create or 
+delete sharenames.  You can do the same thing with the NS_DOM.xxx files.  Then 
+a new user couldn't be added or modified.  The problem with this fix is that 
+the server will not boot if the ShrList has been protected.  Then you will 
+have to modify your 3Plus_On.Bat file to unprotect the ShrList file.  This 
+worked fine until I tried it on a 3Server3.  Even with it unprotecting it, the 
+server wouldn't boot.  I had to reboot twice for it to work.  Also, user's 
+will not be able to create personal ShareNames and they will not be able to 
+modify their passwords.
+
+Author: Carl Schelin - (703) 659-9865
