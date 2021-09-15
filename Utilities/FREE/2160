@@ -1,0 +1,32 @@
+INT 21 - DOS 3.0+ - CANONICALIZE FILENAME OR PATH
+	AH = 60h
+	DS:SI -> ASCIZ filename or path
+	ES:DI -> 128-byte buffer for canonicalized name
+Return: CF set on error
+	    AX = error code
+	        02h invalid component in directory path or drive letter only
+	        03h malformed path or invalid drive letter
+	    ES:DI buffer unchanged
+	CF clear if successful
+	    AH = 00h
+	    AL = destroyed (00h or 5Ch or last char of current dir on drive)
+	    buffer filled with qualified name of form D:\PATH\FILE.EXT or
+	      \\MACHINE\PATH\FILE.EXT
+Notes:	the input path need not actually exist
+	letters are uppercased, forward slashes converted to backslashes,
+	  asterisks converted to appropriate number of question marks, and
+	  file and directory names are truncated to 8.3 if necessary.
+	'.' and '..' in the path are resolved
+	filespecs on local drives always start with "d:", those on network
+	  drives always start with "\\"
+	if path string is on a JOINed drive, the returned name is the one that
+	  would be needed if the drive were not JOINed; similarly for a
+	  SUBSTed, ASSIGNed, or network drive letter.	Because of this, it is
+	  possible to get a qualified name that is not legal under the current
+	  combination of SUBSTs, ASSIGNs, JOINs, and network redirections
+	functions which take pathnames require canonical paths if invoked via
+	  INT 21/AX=5D00h
+	this function is used to form the full pathname of an invoked program
+	  which is stored after the end of its environment
+	supported by OS/2 v1.1 compatibility box
+SeeAlso: INT 2F/AX=1123h,1221h
