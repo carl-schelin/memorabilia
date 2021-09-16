@@ -1,0 +1,101 @@
+To start, you must select an available color by either using the mouse and 
+clicking on a color, or by pressing the first character of the color, for 
+example, pressing 'b' will bring up the Blue dialog box.
+
+Type in your name or a pseudonym of up to 10 characters. This name will be 
+passed around to the other nodes. Backspacing will clear the previous 
+character from the field.
+
+Once a name has been entered, you may start playing.
+
+To "draw" a line, you have four options:
+
+   Place the mouse pointer on the gray rectangle between the posts and press 
+   the left button.
+
+   Place the mouse pointer to the left or right of the rectangle between the 
+   posts and, holding down the left mouse button, drag to the right or left so 
+   that you pass between the two posts.
+
+   Place the mouse pointer to the top or bottom of the rectangle between the 
+   posts and, holding down the left mouse button, drag to the bottom or top so 
+   that you pass between the two posts.
+
+   When three sides of the square have been selected, you can press the right 
+   mouse button which will cause the final line will be "drawn" and the square 
+   filled with your color.
+
+Play is alternate. You draw your line and then your opponents draw theirs. If 
+you complete a box, it is still your turn and you must draw another line. 
+
+When the game is complete, the center of each square will change to the 
+winner's color.
+
+The following keys are available at various points during the game:
+
+   <Shift>+<S> - Saves the game to Dot2Dot.Dat. Make sure you have write 
+                 permission to Dot2Dot.Dat or you will lose whatever game is 
+                 currently being run.
+   <Shift>+<R> - "Plays" the saved game. This will only work before any game 
+                 moves (including selecting a color).
+   <Shift>+<B> - Invoke "Blind" mode. This allows players who have a hard time 
+                 seeing the lines as they are being drawn. Each line is filled 
+                 by the current player's color rather than the default gray. 
+                 This is also available from the command-line by passing 
+                 "Blind" or just the letters 'b'/'B' to Dot2Dot. Make sure you 
+                 have write permission to Dot2Dot.Dat or you will lose 
+                 whatever game is currently being run.
+   <Q>         - Quit. You will be prompted with a dialog box. Using the 
+                 mouse, select the answer (Yes or No) or you may press the 
+                 letter 'Y' or 'N'.
+   <N>         - Clears the entire game. Redraws the board and resets each of 
+                 the players. (No it doesn't ask you.)
+   <[color]>   - A single character for each of the colors ('B'lue, 'M'agenta, 
+                 'Y'ellow, 'R'ed, 'G'reen and 'C'yan). This brings up the name 
+                 dialog box.
+   <H>         - Help. This brings up the first help screen as you enter the 
+                 game. You may also using the mouse to press the large white 
+                 '2' in the Dot 2 Dot logo at the upper right corner. You can 
+                 read help by passing '?' on the command-line to Dot2Dot.
+
+Starting Dot2Dot: No moves can be made until a player has selected a color.
+  To select your color, use the mouse pointer and position it over one of the 
+  boxes (preferably a blank one) and press the left button. A dialog box is 
+  created to allow you to enter your name. You may type up to 8 characters.
+
+How to Play: Using the mouse pointer, press the left button and drag 
+  perpendicular between two posts, causing a line to be drawn. When you have 
+  four lines that complete a box, the box will be filled with your color and 
+  your score will increase by one. You may press the right mouse button while 
+  within a box with three sides completed and the fourth side will complete 
+  and the box will fill.
+
+Ending Dot2Dot: Whomever has the most squares at the end of Dot2Dot is the 
+  winner. You may press 'Q' to quit Dot2Dot at any time.
+
+About Dot2Dot: Dot2Dot is what I call the game. I don't recall that it ever 
+  had a real name. You would take a piece of paper and create a dot grid of 
+  any size on it. You and someone else would then alternately start drawing 
+  lines. If you completed a box, you put your initials in it and drew another 
+  line. The person who had the most boxes at the end won.
+
+History:
+  Block Buster v1.0 was written in Microsoft QuickBasic to demonstrate how to 
+    play to my oldest daughter. It used CGA and no mouse. You used the 
+    keyboard to move a crosshair around the grid.
+  Dot2Dot v2.0 was written using TurboC. I had the idea to have the game work 
+    across a network using NETBIOS. Using CB and _C Programmer's Guide to 
+    NETBIOS_ I tried to get it working. That didn't work well, but the game 
+    was written in C and used EGA.
+  Dot2Dot v3.0 was written using Borland C++ v3.1. I have been using TCP/IP 
+    and FTP's SDK and decided to rewrite it again. I have learned more about 
+    C and rewrote most of the 2.0 version and now have TCP/IP support using 
+    FTP's kernal. Now you should be able to play Dot2Dot from any point on 
+    the Globe where you are connected to the Internet.
+  Dot2Dot v3.1 was written using Microsoft C v6.0. I prefer to use Borland C++
+    but due to the price of getting the Borland libraries from FTP, I changed
+    to MSC.
+
+
+
+Dot2Dot is Copyright (C), 1986 - 1996 by Carl Schelin. All Rights Reserved.

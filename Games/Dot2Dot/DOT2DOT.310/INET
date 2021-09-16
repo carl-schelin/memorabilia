@@ -1,0 +1,25 @@
+unsigned long inet4addr(char *ipaddress)
+{
+    unsigned long target = 0L;
+    char array[4][4];
+    char *ptr;
+    int j = 0, k = 0, l;
+
+    printf("%s\n", ipaddress);
+    for (l = k = j = 0; j < strlen(ipaddress); j++)
+        if (ipaddress[j] == '.') {
+            array[l++][k] = '\0';
+            k = 0;
+        }
+        else
+            array[l][k++] = ipaddress[j];
+
+    printf("%s\n", ipaddress);
+    target  = strtoul(array[0], &ptr, 10) * 1L;
+    target += strtoul(array[1], &ptr, 10) * 256L;
+    target += strtoul(array[2], &ptr, 10) * 65536L;
+    target += strtoul(array[3], &ptr, 10) * 16777216L;
+
+    return target;
+}
+

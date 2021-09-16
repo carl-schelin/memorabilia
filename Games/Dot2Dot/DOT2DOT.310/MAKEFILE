@@ -1,0 +1,97 @@
+OBJS=\
+button.obj \
+client.obj \
+console.obj \
+desktop.obj \
+drwpiece.obj \
+editfld.obj \
+fillbox.obj \
+intro.obj \
+main.obj \
+mouse.obj \
+network.obj \
+player.obj \
+qdialog.obj \
+reduce.obj \
+replay.obj \
+server.obj \
+utility.obj
+# \
+#borte.fon \
+#script.fon
+
+#   cl /AL *.obj /FeDot2Dot.Exe /link graphics.lib
+MODEL=L
+SWITCHES=/A$(MODEL) /Od /Gs /Gd /W4 /c
+
+.c.obj:
+  cl $(SWITCHES) {$< }
+
+dot2dot.exe : $(OBJS)
+  link /E @&&|
+button.obj+
+client.obj+
+console.obj+
+desktop.obj+
+drwpiece.obj+
+editfld.obj+
+fillbox.obj+
+intro.obj+
+main.obj+
+mouse.obj+
+network.obj+
+player.obj+
+qdialog.obj+
+reduce.obj+
+replay.obj+
+server.obj+
+utility.obj /farcall
+Dot2Dot.Exe /noi
+NUL
+$(MODEL)pc.lib+
+$(MODEL)socket.lib+
+$(MODEL)netlib.lib+
+graphics.lib
+;
+|
+
+button.obj  : button.c dot2dot.h mouse.h
+
+client.obj  : client.c dot2dot.h mouse.h
+
+console.obj : console.c dot2dot.h mouse.h
+
+desktop.obj : desktop.c dot2dot.h
+
+drwpiece.obj : drwpiece.c dot2dot.h
+
+editfld.obj : editfld.c dot2dot.h mouse.h
+
+fillbox.obj : fillbox.c dot2dot.h mouse.h
+
+intro.obj   : intro.c dot2dot.h mouse.h
+
+main.obj    : main.c dot2dot.h mouse.h
+
+mouse.obj   : mouse.c mouse.h
+
+network.obj  : network.c dot2dot.h mouse.h
+
+player.obj  : player.c dot2dot.h mouse.h
+
+qdialog.obj : qdialog.c dot2dot.h mouse.h
+
+reduce.obj  : reduce.c dot2dot.h
+
+replay.obj  : replay.c dot2dot.h
+
+server.obj  : server.c dot2dot.h mouse.h
+
+utility.obj : utility.c dot2dot.h mouse.h
+
+#borte.fon : \lang\bc\bin\borte.fon
+#    copy \lang\bc\bin\borte.fon
+
+#script.fon : \lang\msc\source\samples\script.fon
+#    copy \lang\msc\source\samples\script.fon
+
