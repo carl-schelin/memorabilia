@@ -1,0 +1,44 @@
+
+Command: SetEnv.Exe
+
+Syntax: SetEnv [{N}ame | {A}ddress | {V}ideo] Environment_Name 
+               | Size Minimum_Environment_Size
+
+Brief: Sets the master environment for a user's login name, ethernet address, 
+video adapter type, or return an errorlevel if the environment is smaller than 
+a number you set.
+
+Description: SetEnv is actually four functions. 
+   1) SetEnv Name Env_Name - allows you to assign a user's login name to an 
+         environment variable you set.
+   2) SetEnv Address Env_Name - allows you to assign a user's ethernet address 
+         to any environment variable.
+   3) SetEnv Video Env_Name - allows you to assign A, D or E depending on your 
+         video board. The A, D or E corresponds with the 3Com 3+Menus default 
+         colors. A is monochrome, E is color and D is used for systems that 
+         use both. I have A for straight monochrome, D for any graphics 
+         adapter that runs in monochrome mode and E for any color system.
+   4) SetEnv Size Min_Env_Size - this allows you to return an errorlevel based 
+         on the size of your environment. If your environment is less than 
+         Min_Env_Size, then errorlevel 1 is returned. 
+
+Example:
+
+     @Echo Off
+     SetEnv Size 1024
+     If ErrorLevel 1 Goto ByPass
+     SetEnv Name S_User
+     SetEnv Address S_Station
+     SetEnv Video S_DType
+     Set S_FileDir=H:\Net\
+     Set S_Server=%Department%:HQ:GTSI
+     Set S_Usermenu=%Department%
+     :ByPass
+
+Note: On my network, we are using Saber menus which require some environment 
+parameters. It uses S_User, S_Station and S_Server for the Meter program for 
+logging in to an application. I found the Environment manipulation source code 
+on a bulletin board, the 3Com 3+Developers Library and CXL for the video 
+routine.
+
+Author: Carl Schelin - (703) 631-3333 x1125 / (703) 659-9865
