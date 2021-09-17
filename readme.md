@@ -33,6 +33,7 @@ Third is my 3D StarTrek program. It was based on the Super StarTrek from the Uni
 
 ### Internet Tools
 
+This is just my Metal DOS based Newsreader. It was something I created while working at Johns Hopkins Applied Physics Lab. I was a 3Com LAN admin and trainer but it was pretty idle so the boss wanted me to create a DOS based news reader. It was quite enlightening and I think the main reason I got hired a few years later as a Unix admin.
 
 
 ### Network Programs 
