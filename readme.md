@@ -12,6 +12,11 @@ Later a company called Tesseract that had been creating TSR (Terminate and Stay 
 Of course neither of these libraries are available (although I think I might still have the diskette I got from Mike). And without the TurboC or Borland C++ compilers, it's unlikely they'll be compilable any time soon.
 
 
+### 3Com Networks
+
+In the Networking directories may be some utilities I created for 3Com's 3+Share local area networking environments. As such they're certainly not useful nowadays :) Still, interesting ideas I had there to help manage my networks.
+
+
 ### Dungeons & Dragons
 
 This directory structure contains my Computerized Dungeon Master. I wrote it to help me run my games. I'd have a laptop (a small Toshiba 1100+) and could enter character information. I gradually improved it and even converted it to C in order to learn how to program in C.
@@ -32,11 +37,14 @@ Third is my 3D StarTrek program. It was based on the Super StarTrek from the Uni
 
 ### Network Programs 
 
+These utilities are larger more involved tools. They're also ones I created vs just using a library call so they were Shareware. I actually did get a couple of bucks for some of these tools so someone thought they were worth it.
 
 ### Network Utilities
 
+These utilities are smaller things that were likely just library calls I compiled and maybe inhanced a little.
 
 
 ### Utilities
 
+Most of these were used to add functionality to my batch files. Things that were missing in DOS. Upon review, several seem to mimic some Unix/Linux type utilities so there's some commonality there. Many have a DOC file.
 
