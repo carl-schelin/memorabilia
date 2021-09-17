@@ -1,0 +1,37 @@
+
+Command: Admin.Exe
+
+Syntax: Admin [Domain_Name]
+
+Brief: Admin displays all users on the 3+Share Network that have the 
+    Capability Class of Admin. 
+
+Explanation: Admin loops through the entire Name Service (NS_DOM.xxx) looking 
+    for any user that has the Capability Class of Admin.
+You can select a single domain by specifying the domain name on the 
+    Command-Line. The Domain_Name option assumes only the default 
+    Organization. 
+This program will only operate if you are logged in and have the Capability 
+    Class of Admin.
+
+Example: 
+
+ADMIN Name Generator v1.1, Copyright (C) 1990 by Carl Schelin
+Getting ADMIN users from the Name Service...
+
+Organization Selected: GTSI
+    Domain Selected: HQ
+        ADMIN: [admin:HQ:GTSI]
+    Domain Selected: Chantilly
+    Domain Selected: Dallas
+        ADMIN: [admin:HQ:GTSI]
+Organization Selected: 3Com
+    Domain Selected: VA
+
+
+Note: I wrote this program mainly because of security. I wanted to know who 
+    was an ADMIN on the 3+Share Network that I was Administering.
+This version, 1.1, reflects the search through every Organization rather than 
+    just the default one.
+
+Author: Carl Schelin - (703) 659-9865

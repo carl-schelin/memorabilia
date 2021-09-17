@@ -1,0 +1,3 @@
+admin.exe : admin.c
+   bcc admin.c d3l-tc.lib
+
